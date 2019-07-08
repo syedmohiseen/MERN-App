@@ -1,3 +1,4 @@
+
 import API from "../../../Api";
 export function loginUser(data) {
   return dispatch =>
@@ -35,25 +36,25 @@ export function setUserDetails(data) {
   };
 }
 
-export function forgotPassword(data, callback) {
-  return dispatch =>
-    API.forgotPassword.post(null, { ...data }).then(
-      result => {
-        callback(null, result);
-      },
-      err => callback(err)
-    );
-}
+// export function forgotPassword(data, callback) {
+//   return dispatch =>
+//     API.forgotPassword.post(null, { ...data }).then(
+//       result => {
+//         callback(null, result);
+//       },
+//       err => callback(err)
+//     );
+// }
 
 
-export function validateToken(data,callback){
-  return dispatch =>
-  API.validateToken.post(null, { ...data }).then(
-    result => {
-      callback(null, result);
-    },
-    err => callback(err)
-  );
-}
+// export function validateToken(data,callback){
+//   return dispatch =>
+//   API.validateToken.post(null, { ...data }).then(
+//     result => {
+//       callback(null, result);
+//     },
+//     err => callback(err)
+//   );
+// }
 
 

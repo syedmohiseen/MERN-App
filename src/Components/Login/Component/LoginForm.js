@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+// import { makeStyles } from "@material-ui/core/styles";
 // import FormControl from "@material-ui/core/FormControl";
 // import Input from "@material-ui/core/Input";
 // import InputLabel from "@material-ui/core/InputLabel";
@@ -38,56 +38,22 @@ import styles from "../login.styles";
 import * as LoginActions from "../redux/login.action";
 import * as ErrorsActions from "../../Layout/redux/errors.actions";
 import * as SuccessActions from "../../Layout/redux/success.actions";
-
-const useStyles = makeStyles(theme => ({
-    makeCenter: {
-        position: 'fixed',
-        top: '50%',
-        left: '50%',
-        width: '30em',
-        height: '11em',
-        'margin-top': '-9em',
-        'margin-left': '-15em',
-        border: '1px solid #ccc'
-        // 'background-color': '#f5e6e6',
-    },
-    container: {
-        display: "flex",
-        flexWrap: "wrap"
-    },
-    formControl: {
-        margin: theme.spacing(1)
-    }
-}));
-var menuArray = [
-    { link: "/signUp", name: "SignUp" },
+  class Login extends React.Component {
+    onSubmitLogin = values => {
+      values = {
+        username: values.username,
+        password: values.password,
+        grant_type: "password",
+        client_id: "test-SuperAdmin",
+        client_secret: "y2w5jtCqhgYIo7MbJ4PlQF3QEet3mqOqc8Aq10"
+      };
+      this.props.loginUser(values);
+      console.log("this.props",this.props)
+    };
+    render(){
+    const { classes,handleSubmit } = this.props;
     
-  ];
-function Login(props) {
-    console.log(props,"props")
-    // const [name1, setName] = React.useState("");
-    // const [password, setPassword] = React.useState("");
-    const classes = useStyles();
-    function onSubmitLogin(values) {
-        alert(values.userName)
-
-    }
-    const { handleSubmit } = props;
-    
-    return (
-        
-        <div className={classes.makeCenter}>
-            <div>
-      {/* {menuArray.map((menu, index) => (
-        <Link to={menu.link} key={menu.name}>
-          <ListItem button>
-            <ListItemText primary={menu.name} />
-          </ListItem>
-        </Link>
-      ))} */}
-
-
-    </div>
+    return (     
     
         <main className={classes.main}>
           <CssBaseline />
@@ -95,7 +61,7 @@ function Login(props) {
           <Typography component="h1" variant="h5">
               ReactLogin
             </Typography>
-        <form onSubmit={handleSubmit(onSubmitLogin)}>
+        <form onSubmit={handleSubmit(this.onSubmitLogin)}>
               <Field
                 className={classes.textBase}
                 name="username"
@@ -127,9 +93,9 @@ function Login(props) {
             </Paper>
             </main>
             
-            </div>
             
     );
+  }
 }
 
 Login.propTypes = {
@@ -146,14 +112,11 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-const mapDispatchToProps = props => {
-    console.log("here");
-    return {
+const mapDispatchToProps =  {
         loginUser: LoginActions.loginUser,
-        forgotPasswords: LoginActions.forgotPassword,
+        // forgotPasswords: LoginActions.forgotPassword,
         errorMsg: ErrorsActions.errorMsg,
         successMsg: SuccessActions.successMsg
-    }
 };
 
 LoginForm = connect(

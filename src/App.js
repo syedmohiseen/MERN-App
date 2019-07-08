@@ -13,6 +13,7 @@ import store from './Store/store'
 import PrivateRoute from "./Components/Login/Auth/PrivateRoute";
 import Login from './Components/Login';
 import Layout from './Components/Layout';
+import imageGallery from './Components/imageGallery/imgGallery'
 
 class App extends React.Component {
   
@@ -26,7 +27,7 @@ class App extends React.Component {
                 <Switch>
                   <Route exact={true} path={"/login"} component={Login}/>
                   <Route path='/register' component={RegistrationForm} />
-                  <PrivateRoute path={"/"} component={Layout}/>
+                  <PrivateRoute path={"/"} component={imageGallery}/>
                 </Switch>
               </div>
             </HashRouter>

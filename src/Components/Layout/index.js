@@ -77,14 +77,14 @@ function Index(props) {
     let obj = {
       token: props.auth.tokenValue
     };
-    props.validateToken(obj, (err, result) => {
-      if (result && result.userId) {
-      } else {
+    // props.validateToken(obj, (err, result) => {
+    //   if (result && result.userId) {
+      // } else {
         props.history.push("/login");
         store.dispatch(AuthActions.logout());
         window.location.reload();
-      }
-    });
+      // }
+    // });
   }
 
   const { classes } = props;

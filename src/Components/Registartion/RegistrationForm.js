@@ -13,7 +13,7 @@ class RegisterPage extends React.Component {
             },
             submitted: false
         };
-
+        console.log("propspropspropssssss",props.gretings)
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -42,8 +42,10 @@ class RegisterPage extends React.Component {
     }
 
     render() {
+        console.log(this.props,"this.statethis.statethis.statethis.state",this.state)
         const { registering  } = this.props;
         const { user, submitted } = this.state;
+        // console.log(this.state.props,"sfsfsjfvshfvbjsdbj")
         return (
             <div className="col-md-6 col-md-offset-3">
                 <h2>Register</h2>

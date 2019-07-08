@@ -1,14 +1,14 @@
-// import {
-//     loadUserState,
-//     saveUserState,
-//     clearUserState
-//   } from "../Auth/loadUserState";
+import {
+    loadUserState,
+    saveUserState,
+    clearUserState
+  } from "../Auth/loadUserState";
 //   const loadUserState = loadUserState();
-  export default function(state = {}, action) {
+  export default function(state = loadUserState(), action) {
     switch (action.type) {
       case "LOGIN_SUCCESS":
         let user = { ...action.data, isLoggedIn: true };
-        // saveUserState(user);
+        saveUserState(user);
         return user;
   
       case "LOGIN_ERROR":
@@ -17,7 +17,7 @@
           loginError: action.data
         };
       case "LOGOUT":
-        // clearUserState();
+        clearUserState();
         return {};
   
       default:
